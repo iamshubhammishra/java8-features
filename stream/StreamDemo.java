@@ -5,7 +5,6 @@ import java.util.stream.Collectors;
 
 public class StreamDemo {
     public static void main(String[] args) {
-        //Find first even number than square it and return sum
         getSumOfSquareOfEvenNumber();
         toUppercase();
         firstElementStartWithA();
@@ -18,6 +17,7 @@ public class StreamDemo {
         flattenList();
         topThreeHighestSalaryPerDepartment();
         fistNonRepeatingChar();
+        joinString();
     }
 
     private static void getSumOfSquareOfEvenNumber() {
@@ -145,5 +145,24 @@ public class StreamDemo {
                 .findFirst()
                 .orElse(null);
         System.out.println("First non repeating char is " + nonRepeatingChar);
+    }
+
+    private static void joinString(){
+        List<String> names = Arrays.asList("Alice", "Bob", "Charlie");
+
+        String result = names.stream()
+                .collect(Collectors.joining());
+
+        System.out.println(result);  // Output: AliceBobCharlie
+
+        String resultTwo = names.stream()
+                .collect(Collectors.joining(", "));
+
+        System.out.println(resultTwo);  // Output: Alice, Bob, Charlie
+
+        String resultThird = names.stream()
+                .collect(Collectors.joining(", ", "[", "]"));
+
+        System.out.println(resultThird);  // Output: [Alice, Bob, Charlie]
     }
 }
